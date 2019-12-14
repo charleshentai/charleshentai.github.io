@@ -144,7 +144,7 @@ const CATEGORIES = {
 };
 
 function addDropdowns() {
-	Object.keys(CATEGORIES).forEach((key) => {
+	Object.keys(CATEGORIES).sort().forEach((key) => {
 		let categoryObj = CATEGORIES[key];
 		let categoryElement = document.createElement("option");
 		categoryElement.innerText = categoryObj["name"] || uppercaseFirst(key);
