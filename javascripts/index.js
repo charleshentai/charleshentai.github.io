@@ -144,7 +144,13 @@ const CATEGORIES = {
 };
 
 function addDropdowns() {
-	Object.keys(CATEGORIES).sort().forEach((key) => {
+	Object.keys(CATEGORIES).sort((element1, element2) => {
+		let obj1 = CATEGORIES[element1];
+		let obj2 = CATEGORIES[element2];
+		let text1 = typeof obj1.name == "undefined" ?  element1.toUpperCase() : obj1.name.toUpperCase();
+		let text2 = typeof obj2.name == "undefined" ?  element2.toUpperCase() : obj2.name.toUpperCase();
+		return (text1 < text2) ? -1 : (text1 > text2) ? 1 : 0;
+	}).forEach((key) => {
 		let categoryObj = CATEGORIES[key];
 		let categoryElement = document.createElement("option");
 		categoryElement.innerText = categoryObj["name"] || uppercaseFirst(key);
