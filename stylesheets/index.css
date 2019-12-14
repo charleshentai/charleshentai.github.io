@@ -1,0 +1,69 @@
+.loading {
+	background-image: url("../images/loading.png");
+	background-size: 320px;
+}
+
+.styled-select {
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 3px;
+  
+  overflow: hidden;
+  position: relative;
+}
+.styled-select, .styled-select select { font-size: 16px; width: 120px; height: 40px;}
+select:focus { outline: none; }
+.styled-select select {
+  height: 34px;
+  padding: 5px 0 5px 5px;
+  background: transparent;
+  border: none;
+  
+  /*hide default down arrow in webkit */
+  -webkit-appearance: none; 
+}
+
+@-moz-document url-prefix() {
+  .styled-select select { width: 110%; }
+}
+
+.fa-sort-desc {
+  position: absolute;
+  top: 0;
+  right: 12px;
+  font-size: 24px;
+}
+
+ select::-ms-expand { display: none; } /* hide default down arrow in IE10*/
+
+/* hack to fall back in opera */
+_:-o-prefocus, .selector {
+  .styled-select { background: none; }
+  }
+
+.button {
+	border-radius: 3px;
+	background-color: maroon;
+	border: none;
+	color: white;
+	width: 120px;
+	height: 40px;
+ 	padding: 5px 0 5px 5px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+}
+
+.pull {
+	width: 140px;
+}
+
+.button:hover {
+	background-color: #500000;
+}
+
+.responsive {
+	width: 100%;
+	height: auto;
+}

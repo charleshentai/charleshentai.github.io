@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Charles' Hentai Bot</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheets/index.css">
+</head>
+<body>
+    <h1>Welcome to Charles' Hentai Bot</h1>
+    <br>
+    <select id="categories" onchange="pullImage()" class="styled-select"></select>
+    <input id="enter" type="button" class="button pull" value="Pull from Nekos" onclick="pullImage()">
+    <input id="randomize" type="button" class="button" value="Randomize" onclick="pullRandom()">
+    <br><br>
+    <img src="images/loading.png" id="image" class="responsive loading">
+    <script src="javascripts/index.js"></script>
+</body>
+</html>
