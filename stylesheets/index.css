@@ -3,6 +3,11 @@
 	background-size: 320px;
 }
 
+img {
+  width: 100%;
+  height: auto;
+}
+
 .styled-select {
   border: 1px solid #ccc;
   box-sizing: border-box;
