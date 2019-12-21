@@ -8,12 +8,6 @@ div {
    height:80vh;
 }
 
-img {
-   max-width:100%;
-   height:auto;
-   max-height:100%;
-}
-
 .styled-select {
   border: 1px solid #ccc;
   box-sizing: border-box;
