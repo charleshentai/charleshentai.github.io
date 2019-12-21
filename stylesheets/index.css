@@ -3,6 +3,13 @@
 	background-size: 320px;
 }
 
+.div {
+    width: 75vw;
+    height: 75vh;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
 .img {
    max-width:100%;
    height:auto;
