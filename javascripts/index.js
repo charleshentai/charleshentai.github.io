@@ -1,11 +1,12 @@
 const SELECT = document.getElementById("categories");
 const IMAGE_ELEMENT = document.getElementById("image");
 document.addEventListener("DOMContentLoaded", () => {
+	sort();
 	addDropdowns();
 	pullRandom();
 });
 const API = "https://nekos.life/api/v2";
-const CATEGORIES = {
+let CATEGORIES = {
 	"randomHentaiGif": {
 		"name": "Random Hentai GIF",
 		"endpoint": "/img/Random_hentai_gif"
@@ -61,10 +62,6 @@ const CATEGORIES = {
 	"girlSolo": {
 		"name": "Solo Girl",
 		"endpoint": "/img/solo"
-	},
-	"smallBoobs": {
-		"name": "Small Boobs",
-		"endpoint": "/img/smallboobs"
 	},
 	"pussyWankGif": {
 		"name": "Pussy Wank GIF",
@@ -143,20 +140,26 @@ const CATEGORIES = {
 	}
 };
 
+function switchMode() {
+	document.body.classList.toggle("theme-dark")
+}
+
 function addDropdowns() {
-	Object.keys(CATEGORIES).sort((element1, element2) => {
-		let obj1 = CATEGORIES[element1];
-		let obj2 = CATEGORIES[element2];
-		let text1 = typeof obj1.name == "undefined" ?  element1.toUpperCase() : obj1.name.toUpperCase();
-		let text2 = typeof obj2.name == "undefined" ?  element2.toUpperCase() : obj2.name.toUpperCase();
-		return (text1 < text2) ? -1 : (text1 > text2) ? 1 : 0;
-	}).forEach((key) => {
+	Object.keys(CATEGORIES).forEach((key) => {
 		let categoryObj = CATEGORIES[key];
 		let categoryElement = document.createElement("option");
 		categoryElement.innerText = categoryObj["name"] || uppercaseFirst(key);
 		categoryElement.value = key;
 		SELECT.appendChild(categoryElement);
 	});
+}
+
+function sort() {
+	let sorted = {};
+	Object.keys(CATEGORIES).sort((a, b) => {
+		return (CATEGORIES[a].name || a).toLowerCase() > (CATEGORIES[b].name || b).toLowerCase() ? 1 : -1;
+	}).forEach(key => sorted[key] = CATEGORIES[key]);
+	CATEGORIES = sorted;
 }
 
 function randomKey(object) {
@@ -169,9 +172,14 @@ function uppercaseFirst(value) {
 	return value.charAt(0).toUpperCase() + value.slice(1);
 }
 
+function setSelect(category) {
+	SELECT.value = category;
+	document.querySelector("#selected-category").innerText = CATEGORIES[category]["name"] || uppercaseFirst(category);
+}
+
 function pullRandom() {
 	let category = randomKey(CATEGORIES);
-	SELECT.value = category;
+	setSelect(category);
 	pull(category);
 }
 
@@ -181,16 +189,26 @@ function pullImage() {
 
 function pull(type) {
 	if(!type || typeof CATEGORIES[type] == "undefined") return;
+	IMAGE_ELEMENT.src = "images/loading.png";
 	let xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState === 4) {
 			draw(JSON.parse(xhr.responseText)["url"]);
 		}
 	};
-	xhr.open('GET', API + CATEGORIES[type].endpoint, false);
+	xhr.open('GET', API + CATEGORIES[type].endpoint);
 	xhr.send();
 }
 
 function draw(url) {
 	IMAGE_ELEMENT.src = url;
 }
+
+var app = new Framework7({
+  root: '#hentai',
+  name: "Charles' Hentai Site",
+  id: 'sys.jordan.yuri',
+  routes: []
+});
+
+var mainView = app.views.create('.view-main');

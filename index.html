@@ -1,19 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="trafficjunky-site-verification" content="ux8883unt">
-    <title>Charles' Hentai Bot</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#536390">
+    <title>Charles' Site</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/framework7/3.5.2/css/framework7.min.css">
     <link rel="stylesheet" href="stylesheets/index.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    <h1>Charles' Hentai</h1>
-    <select id="categories" onchange="pullImage()" class="styled-select"></select>
-    <input id="enter" type="button" class="button pull" value="Find Image" onclick="pullImage()">
-    <input id="randomize" type="button" class="button" value="Randomize" onclick="pullRandom()">
-    <br><br>
-    <div class="div"><img src="images/loading.png" id="image" class="img loading"></div>
-    <script src="javascripts/index.js"></script>
-    
+<div id="hentai">
+    <div class="statusbar"></div>
+    <div class="view view-main">
+        <div data-name="home" class="page">
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <div class="title">Charles' Hentai Site</div>
+                </div>
+            </div>
+            <div class="page-content">
+                <div class="list">
+                    <ul>
+                        <li>
+                            <a href="#" class="item-link smart-select">
+                                <label><select id="categories" onselect="pullImage()"></select></label>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title">Category</div>
+                                        <div id="selected-category" class="item-after"></div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="row center">
+                    <div class="col-45"><button class="button center button-raised" onclick="pullRandom()">Randomize</button></div>
+                    <div class="col-45"><button class="button center button-raised" onclick="pullImage()">Pull</button></div>
+                </div>
+                <div class="card justify-content-center">
+                    <img src="images/loading.png" id="image" class="justify-content-space-around responsive loading" alt="Loading image...">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/framework7/3.5.2/js/framework7.min.js"></script>
+<script type="text/javascript" src="javascripts/index.js"></script>
 </body>
 </html>
